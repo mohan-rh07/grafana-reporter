@@ -22,8 +22,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/IzakMarais/reporter/grafana"
-	"github.com/IzakMarais/reporter/report"
+	"github.com/mohan-rh07/grafana-reporter/grafana"
+	"github.com/mohan-rh07/grafana-reporter/report"
 	"github.com/gorilla/mux"
 )
 
@@ -50,10 +50,11 @@ func main() {
 	//'generated*'' variables injected from build.gradle: task 'injectGoVersion()'
 	log.Printf("grafana reporter, version: %s.%s-%s hash: %s", generatedMajor, generatedMinor, generatedRelease, generatedGitHash)
 	log.Printf("serving at '%s' and using grafana at '%s'", *port, *proto+*ip)
+	log.Printf("%t", sslCheck)
 	if !*sslCheck {
-		log.Printf("SSL check disabled")
+		log.Printf("SSL check disabled...")
 	} else {
-		log.Printf("SSL check enforced")
+		log.Printf("SSL check enforced...")
 	}
 	if !*gridLayout {
 		log.Printf("Using sequential report layout. Consider enabling 'grid-layout' so that your report more closely follow the dashboard layout.")
